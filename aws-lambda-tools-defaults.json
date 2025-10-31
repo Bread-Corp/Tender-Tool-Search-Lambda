@@ -10,5 +10,7 @@
   "configuration": "Release",
   "s3-prefix": "TenderToolSearchLambda/",
   "template": "serverless.template",
-  "template-parameters": ""
+  "template-parameters": "",
+  "s3-bucket": "tender-tool-search-api-deploy-bucket",
+  "stack-name": "tender-tool-search-api-stack"
 }
