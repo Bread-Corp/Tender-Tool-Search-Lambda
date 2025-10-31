@@ -32,6 +32,7 @@
               {
                 "Effect": "Allow",
                 "Action": [
+                  "es:ESHttpPost",
                   "es:ESHttpGet"
                 ],
                 "Resource": "arn:aws:es:us-east-1:211635102441:domain/tender-tool-search/*"
