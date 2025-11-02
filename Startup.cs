@@ -41,6 +41,18 @@ public class Startup
             builder.AddConfiguration(Configuration.GetSection("Logging"));
         });
 
+        services.AddCors(options =>
+        {
+            // Use AddDefaultPolicy
+            options.AddDefaultPolicy(builder =>
+            {
+                builder
+                .WithOrigins("*")
+                .AllowAnyMethod()
+                .AllowAnyHeader();
+            });
+        });
+
         // CONFIGURE OPENSEARCH CLIENT
         // This lambda ONLY talks to OpenSearch.
         services.AddSingleton<IOpenSearchClient>(provider =>
@@ -76,10 +88,9 @@ public class Startup
             app.UseDeveloperExceptionPage();
         }
 
-        // We don't need HTTPS redirection in Lambda
-        // app.UseHttpsRedirection();
-
         app.UseRouting();
+
+        app.UseCors();
 
         app.UseAuthorization();
 

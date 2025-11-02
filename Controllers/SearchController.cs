@@ -101,5 +101,16 @@ namespace TenderToolSearchLambda.Controllers
                 return StatusCode(500, new { message = "An unexpected error occurred. Please check logs." });
             }
         }
+
+        /// <summary>
+        /// This explicitly handles the browser's preflight OPTIONS request.
+        /// The app.UseCors() middleware will intercept this and
+        /// add the correct headers to the response.
+        /// </summary>
+        [HttpOptions]
+        public IActionResult HandleOptions()
+        {
+            return Ok();
+        }
     }
 }
